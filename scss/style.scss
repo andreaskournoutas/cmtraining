@@ -1,0 +1,10 @@
+$enable-responsive-font-sizes: true;
+$primary: #3c312d;
+$black: #000;
+$box-shadow: 0 -.5rem 1rem rgba($black, .15);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body, .tab-content, .tab-pane {
+    min-height: 100%;
+}
