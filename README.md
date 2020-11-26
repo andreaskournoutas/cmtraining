@@ -1,2 +1,2 @@
 # cmtraining
-CM Training PWA
+CM Training
