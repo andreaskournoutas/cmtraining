@@ -5,6 +5,54 @@ $box-shadow: 0 -.5rem 1rem rgba($black, .15);
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+body {
+    padding-bottom: 66px;
+}
+
 body, .tab-content, .tab-pane {
     min-height: 100%;
+}
+
+.nav {
+    &-link {
+        color: $secondary;
+        fill: $secondary;
+        &.active, &:hover {
+            color: $light;
+            fill: $light;
+        }
+    }
+}
+
+.logo {
+    &--small {
+        width: 50px;
+    }
+    &--large {
+        width: 100px;
+    }
+}
+
+.omniweb {
+    width: 150px;
+}
+
+#notifications-button {
+    width: 44px;
+}
+
+.custom-control-label::before {
+    background-color: transparent;
+}
+
+.spinner-border {
+    width: 4rem;
+    height: 4rem;
+}
+
+.dark {
+    filter: invert(100%);
+    & img, & .nav, & .custom-control, & [class*='danger'], & [class*='success'], & [class*='primary'] {
+        filter: invert(100%);
+    }
 }

@@ -7,51 +7,295 @@
         <title>CM Training</title>
     </head>
     <body>
-        <div class="container tab-content">
-            <div class="tab-pane fade" id="download">
-
+        <div class="tab-content py-3">
+            <div class="tab-pane fade container-fluid text-center" id="install">
+                <img src="images/logo.png" alt="" class="logo logo--large mb-3">
+                <span class="h1 d-block mb-5">CM Training</span>
+                <span class="d-block font-weight-bold mb-3">Εγκαταστήστε την εφαρμογή</span>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-block btn-primary">Android</button>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-block btn-primary">iOS</button>
+                    </div>
+                </div>
             </div>
-            <div class="tab-pane fade" id="login">
-
+            <div class="tab-pane fade container-fluid text-center" id="login">
+                <img src="images/logo.png" alt="" class="logo logo--large mb-3">
+                <span class="h1 d-block mb-5">CM Training</span>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <form>
+                            <div class="form-group">
+                                <input type="email" id="email" class="form-control" placeholder="Διεύθυνση email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="password" class="form-control" placeholder="Κωδικός πρόσβασης" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="login-button" class="btn btn-block btn-primary">ΣΥΝΔΕΣΗ</button>
+                            </div>
+                            <button type="button" id="password-reset-link" class="btn btn-link">Ξέχασα τον κωδικό πρόσβασης</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="tab-pane fade" id="workouts">
+            <div class="tab-pane fade container-fluid text-center" id="reauthenticate">
+                <img src="images/logo.png" alt="" class="logo logo--large mb-3">
+                <span class="h1 d-block mb-5">CM Training</span>
+                <form>
+                    <div class="form-group">
+                        <input type="email" id="reauthenticate-email" class="form-control-plaintext py-0" readonly>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="reauthenticate-password" class="form-control bg-tranparent" placeholder="Κωδικός πρόσβασης" required>
+                    </div>
+                    <button type="button" id="reauthenticate-button" class="btn btn-block btn-primary">Επιβεβαίωση κωδικού πρόσβασης</button>
+                </form>
+            </div>
+            <div class="tab-pane fade container-fluid text-center" id="password-reset">
+                <img src="images/logo.png" alt="" class="logo logo--large mb-3">
+                <span class="h1 d-block mb-5">CM Training</span>
+                <form class="mb-5">
+                    <div class="form-group">
+                        <input type="email" id="password-reset-email" class="form-control bg-tranparent" placeholder="Διεύθυνση email" required>
+                    </div>
+                    <button type="button" id="password-reset-button" class="btn btn-block btn-primary">Ανάκτηση κωδικού πρόσβασης</button>
+                </form>
+                <div id="password-reset-success" class="alert alert-success text-left mb-0">
+                    <span>Το email ανάκτησης κωδικού απεστάλη με επιτυχία. Παρακαλούμε ελέγξτε τα εισερχόμενά σας.</span>
+                </div>
+                <div  id="password-reset-error" class="alert alert-danger text-left mb-0">
+                    <span>Το email ανάκτησης κωδικού δεν απεστάλη. Παρακαλούμε προσπαθήστε αργότερα.</span>
+                </div>
+            </div>
+            <div class="tab-pane fade container-fluid" id="workouts">
                 
             </div>
-            <div class="tab-pane fade" id="workout">
+            <div class="tab-pane fade container-fluid" id="workout">
 
             </div>
-            <div class="tab-pane fade" id="excercise">
+            <div class="tab-pane fade container-fluid" id="excercise">
 
             </div>
-            <div class="tab-pane fade" id="profile">
+            <div class="tab-pane fade container-fluid" id="create">
 
             </div>
-            <div class="tab-pane fade" id="settings">
+            <div class="tab-pane fade container-fluid" id="edit">
 
             </div>
-            <div class="tab-pane fade" id="create">
+            <div class="tab-pane fade container-fluid" id="profile">
 
             </div>
-            <div class="tab-pane fade" id="about">
-
+            <div class="tab-pane fade container-fluid" id="settings">
+                <div class="row mb-5">
+                    <div class="col-auto d-flex align-items-center">
+                        <img src="images/logo.png" alt="" class="logo logo--small">
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <span class="h1 mb-0">Ρυθμίσεις</span>
+                    </div>
+                </div>
+                <div class="list-group list-group-flush">
+                    <button type="button" id="password-change-link" class="list-group-item list-group-item-action">Αλλαγή κωδικού πρόσβασης</button>
+                    <div class="list-group-item">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <span>Ειδοποιήσεις</span>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" id="notifications-button" class="btn p-0">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <span>Σκούρο θέμα</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="dark-theme-switch">
+                                    <label class="custom-control-label" for="dark-theme-switch"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="list-group-item list-group-item-action text-danger bg-transparent" data-toggle="modal" data-target="#logout-modal">Αποσύνδεση</button>
+                </div>
+                <div id="logout-modal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <span class="d-block mb-3">Είστε σίγουροι ότι θέλετε να αποσυνδεθείτε;</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" id="logout-button" class="btn btn-block btn-danger" data-dismiss="modal">ΝΑΙ</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-block btn-outline-secondary" data-dismiss="modal">ΟΧΙ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade container-fluid" id="password-change">
+                <div class="row mb-5">
+                    <div class="col-auto d-flex align-items-center">
+                        <button type="button" id="back-button" class="btn px-0">
+                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                        <img src="images/logo.png" alt="" class="logo logo--small">
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <span class="h1 mb-0">Κωδικός</span>
+                    </div>
+                </div>
+                <form class="mb-5">
+                    <div class="form-group">
+                        <input type="password" id="password-change-password" class="form-control" placeholder="Νέος κωδικός πρόσβασης" required>
+                    </div>
+                    <button type="button" id="password-change-button" class="btn btn-block btn-primary">Αλλαγή κωδικού πρόσβασης</button>
+                </form>
+                <div id="password-change-success" class="alert alert-success text-left mb-0">
+                    <span>Ο κωδικός πρόσβασης άλλαξε με επιτυχία</span>
+                </div>
+                <div  id="password-change-error" class="alert alert-danger text-left mb-0">
+                    <span>Ο κωδικός πρόσβασης δεν άλλαξε. Παρακαλούμε προσπαθήστε αργότερα.</span>
+                </div>
+            </div>
+            <div class="tab-pane fade container-fluid text-center" id="about">
+                <img src="images/logo.png" alt="" class="logo logo--large mb-3">
+                <span class="h1 d-block mb-4">CM Training</span>
+                <span class="h2 d-block">ΧΡΗΣΤΟΣ ΜΑΓΚΟΥΤΑΣ</span>
+                <span class="h3 d-block mb-3">Personal Trainer</span>
+                <div class="row no-gutters mb-5">
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <svg width="3em" height="3em" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone-square" class="svg-inline--fa fa-phone-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM94 416c-7.033 0-13.057-4.873-14.616-11.627l-14.998-65a15 15 0 0 1 8.707-17.16l69.998-29.999a15 15 0 0 1 17.518 4.289l30.997 37.885c48.944-22.963 88.297-62.858 110.781-110.78l-37.886-30.997a15.001 15.001 0 0 1-4.289-17.518l30-69.998a15 15 0 0 1 17.16-8.707l65 14.998A14.997 14.997 0 0 1 384 126c0 160.292-129.945 290-290 290z"></path></svg>
+                        </a>
+                    </div>
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <svg width="3em" height="3em" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope-square" class="svg-inline--fa fa-envelope-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM178.117 262.104C87.429 196.287 88.353 196.121 64 177.167V152c0-13.255 10.745-24 24-24h272c13.255 0 24 10.745 24 24v25.167c-24.371 18.969-23.434 19.124-114.117 84.938-10.5 7.655-31.392 26.12-45.883 25.894-14.503.218-35.367-18.227-45.883-25.895zM384 217.775V360c0 13.255-10.745 24-24 24H88c-13.255 0-24-10.745-24-24V217.775c13.958 10.794 33.329 25.236 95.303 70.214 14.162 10.341 37.975 32.145 64.694 32.01 26.887.134 51.037-22.041 64.72-32.025 61.958-44.965 81.325-59.406 95.283-70.199z"></path></svg>
+                        </a>
+                    </div>
+                    <div class="col text-center">
+                        <a href="https://www.facebook.com/magoutas/" target="_blank">
+                            <svg width="3em" height="3em" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg>
+                        </a>
+                    </div>
+                    <div class="col text-center">
+                        <a href="https://www.instagram.com/christosmagkoutas/" target="_blank">
+                            <svg width="3em" height="3em" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram-square" class="svg-inline--fa fa-instagram-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div id="install-about" class="mb-5">
+                    <span class="d-block font-weight-bold mb-3">Εγκαταστήστε την εφαρμογή</span>
+                    <div class="row justify-content-center">
+                        <div class="col-5">
+                            <button type="button" class="btn btn-block btn-primary">Android</button>
+                        </div>
+                        <div class="col-5">
+                            <button type="button" class="btn btn-block btn-primary">iOS</button>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://omniweb.gr/" target="_blank">
+                    <img src="images/omniweb.png" alt="" class="omniweb rounded">
+                </a>
             </div>
         </div>
-        <div class="nav nav-justified fixed-bottom bg-primary shadow">
-            <a href="#workouts" id="workouts-tab" class="nav-link text-center text-secondary">
-                <span class="nav-link__icon">
-
-                </span>
+        <div class="nav nav-justified fixed-bottom bg-primary shadow invisible">
+            <a href="#install" id="install-tab" class="tab-link nav-link text-center px-0 install">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                    <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                <br>
+                <small>Λήψη</small>
+            </a>
+            <a href="#login" id="login-tab" class="tab-link nav-link text-center px-0 login">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                </svg>
+                <br>
+                <small>Σύνδεση</small>
+            </a>
+            <a href="#reauthenticate" id="reauthenticate-tab" class="tab-link user admin"></a>
+            <a href="#password-reset" id="password-reset-tab" class="tab-link login"></a>
+            <a href="#workouts" id="workouts-tab" class="tab-link nav-link text-center px-0 user">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                    <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+                    <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
                 <br>
                 <small>Προγράμματα</small>
             </a>
-            <a href="#profile" id="workouts-tab" class="nav-link text-center text-secondary">
-                <span class="nav-link__icon">
-
-                </span>
+            <a href="#create" id="create-tab" class="tab-link nav-link text-center px-0 admin">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                    <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+                    <path fill-rule="evenodd" d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                <br>
+                <small>Δημιουργία</small>
+            </a>
+            <!-- <a href="#edit" id="edit-tab" class="tab-link nav-link text-center px-0 admin">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+                <br>
+                <small>Επεξεργασία</small>
+            </a> -->
+            <a href="#profile" id="profile-tab" class="tab-link nav-link text-center px-0 user">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                </svg>
                 <br>
                 <small>Προφίλ</small>
             </a>
+            <a href="#settings" id="settings-tab" class="tab-link nav-link text-center px-0 user admin">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+                    <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+                </svg>
+                <br>
+                <small>Ρυθμίσεις</small>
+            </a>
+            <a href="#password-change" id="password-change-tab" class="tab-link user admin"></a>
+            <a href="#about" id="about-tab" class="tab-link nav-link text-center px-0 install login user admin">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+                    <circle cx="8" cy="4.5" r="1"/>
+                </svg>
+                <br>
+                <small>Σχετικά</small>
+            </a>
         </div>
+        <div id="loader" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1">
+            <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+                <div class="spinner-border text-primary"></div>
+            </div>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
         <script src="js/script.js"></script>
