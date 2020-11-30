@@ -7,7 +7,7 @@
     "display": "fullscreen",
     "start_url": "https://andreaskournoutas.github.io/cmtraining/",
     "background_color": "#3c312d",
-    "theme_color": " #3c312d",
+    "theme_color": "#3c312d",
     "description": "Εφαρμογή για προσωποποιημένα προγράμματα γυμναστικής",
     "orientation": "portrait",
     "related_applications": [],
