@@ -12,7 +12,7 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 enableDarkThemeOnLoad();
-checkPwaIntallation();
+checkPwaInstallation();
 checkUserState();
 $('.alert').hide();
 listenToDarkThemeChange();
@@ -134,10 +134,20 @@ function listenToDarkThemeChange() {
     });
 }
 
-function checkPwaIntallation() {
+function checkPwaInstallation() {
     if (window.matchMedia('(display-mode: fullscreen)').matches) {
         $('#install-about').hide();
         $('#install-tab').hide();
+    }
+    else {
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+        $('.btn--android').click(function() {
+            deferredPrompt.prompt();
+        });
     }
 }
 
@@ -169,13 +179,3 @@ function checkUserState() {
         }
     });
 }
-
-// function checkLogin() {
-//     firebase.auth().onAuthStateChanged(function(user) {
-//         if (user) {
-//             console.log('logged in');
-//         } else {
-//             console.log('logged out');
-//         }
-//     });
-// }

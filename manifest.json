@@ -5,7 +5,7 @@
     "short_name": "CM Training",
     "scope": "/cmtraining/",
     "display": "fullscreen",
-    "start_url": "https://andreaskournoutas.github.io/cmtraining/",
+    "start_url": "index.html",
     "background_color": "#3c312d",
     "theme_color": "#3c312d",
     "description": "Προσωποποιημένα προγράμματα γυμναστικής",
@@ -122,6 +122,6 @@
             "purpose": "any maskable"
         }
     ],
-    "url": "https://andreaskournoutas.github.io/cmtraining/",
+    "url": "index.html",
     "screenshots": []
 }
