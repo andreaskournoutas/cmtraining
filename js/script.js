@@ -102,11 +102,11 @@ $('#password-reset-link').click(function() {
 $('#dark-theme-switch').change(function() {
     if ($(this).prop('checked')) {
         enableDarkTheme();
-        localStorage.setItem('darkTheme', true);
+        localStorage.setItem('darkTheme', 'true');
     }
     else {
         disableDarkTheme();
-        localStorage.setItem('darkTheme', false);
+        localStorage.setItem('darkTheme', 'false');
     }
 });
 
@@ -121,7 +121,7 @@ function disableDarkTheme() {
 }
 
 function enableDarkThemeOnLoad() {
-    if ((window.matchMedia) && (window.matchMedia('(prefers-color-scheme: dark)').matches) && (localStorage.getItem('darkTheme') != false)) {
+    if ((window.matchMedia) && (window.matchMedia('(prefers-color-scheme: dark)').matches) && (localStorage.getItem('darkTheme') != 'false')) {
         enableDarkTheme();
     }
 }
