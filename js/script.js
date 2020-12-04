@@ -121,7 +121,7 @@ function disableDarkTheme() {
 }
 
 function enableDarkThemeOnLoad() {
-    if ((window.matchMedia) && (window.matchMedia('(prefers-color-scheme: dark)').matches) && (localStorage.getItem('darkTheme') == true)) {
+    if ((window.matchMedia) && (window.matchMedia('(prefers-color-scheme: dark)').matches) && (localStorage.getItem('darkTheme') != false)) {
         enableDarkTheme();
     }
 }
