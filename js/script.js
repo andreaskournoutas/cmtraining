@@ -102,9 +102,11 @@ $('#password-reset-link').click(function() {
 $('#dark-theme-switch').change(function() {
     if ($(this).prop('checked')) {
         enableDarkTheme();
+        localStorage.setItem('darkTheme', true);
     }
     else {
         disableDarkTheme();
+        localStorage.setItem('darkTheme', false);
     }
 });
 
@@ -119,19 +121,21 @@ function disableDarkTheme() {
 }
 
 function enableDarkThemeOnLoad() {
-    if ((window.matchMedia) && (window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if ((window.matchMedia) && (window.matchMedia('(prefers-color-scheme: dark)').matches) && (localStorage.getItem('darkTheme') == true)) {
         enableDarkTheme();
     }
 }
 
 function listenToDarkThemeChange() {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-        if (event.matches) {
-            enableDarkTheme();
-        } else {
-            disableDarkTheme();
-        }
-    });
+    if (localStorage.getItem('darkTheme') == null) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                enableDarkTheme();
+            } else {
+                disableDarkTheme();
+            }
+        });
+    }
 }
 
 function checkPwaInstallation() {
