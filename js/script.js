@@ -15,6 +15,7 @@ enableDarkThemeOnLoad();
 checkPwaInstallation();
 checkUserState();
 $('.alert').hide();
+initializeOneSignal();
 listenToDarkThemeChange();
 
 $('#login-button').click(function() {
@@ -181,5 +182,17 @@ function checkUserState() {
             $('.nav').removeClass('invisible');
             $('#login-tab').tab('show');
         }
+    });
+}
+
+function initializeOneSignal() {
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+        OneSignal.init({
+        appId: "cbd2e5af-f377-4a51-88c3-13a508059c98",
+        notifyButton: {
+            enable: true,
+        },
+        });
     });
 }
