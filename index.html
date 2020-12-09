@@ -24,37 +24,23 @@
     </head>
     <body>
         <div class="tab-content py-3">
-            <div class="tab-pane fade container-fluid text-center" id="install">
-                <img src="images/logo-min.png?v=0" alt="" class="logo logo--large mb-3">
-                <span class="h1 d-block mb-5">CM Training</span>
-                <span class="d-block font-weight-bold mb-3">Εγκαταστήστε την εφαρμογή</span>
-                <div class="row justify-content-center">
-                    <div class="col-5">
-                        <button type="button" class="btn btn-block btn--android btn-primary">Android</button>
-                    </div>
-                    <div class="col-5">
-                        <button type="button" class="btn btn-block btn--ios btn-primary">iOS</button>
-                    </div>
-                </div>
-            </div>
             <div class="tab-pane fade container-fluid text-center" id="login">
                 <img src="images/logo-min.png?v=0" alt="" class="logo logo--large mb-3">
                 <span class="h1 d-block mb-5">CM Training</span>
-                <div class="row justify-content-center">
-                    <div class="col-10">
-                        <form>
-                            <div class="form-group">
-                                <input type="email" id="email" class="form-control" placeholder="Διεύθυνση email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" id="password" class="form-control" placeholder="Κωδικός πρόσβασης" required>
-                            </div>
-                            <div class="form-group">
-                                <button type="button" id="login-button" class="btn btn-block btn-primary">ΣΥΝΔΕΣΗ</button>
-                            </div>
-                            <button type="button" id="password-reset-link" class="btn btn-link">Ξέχασα τον κωδικό πρόσβασης</button>
-                        </form>
+                <form class="mb-4">
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-control bg-transparent" placeholder="Διεύθυνση email" required>
                     </div>
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-control bg-transparent" placeholder="Κωδικός πρόσβασης" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" id="login-button" class="btn btn-block btn-primary">ΣΥΝΔΕΣΗ</button>
+                    </div>
+                    <button type="button" id="password-reset-link" class="btn btn-link">Ξέχασα τον κωδικό πρόσβασης</button>
+                </form>
+                <div class="alert alert-info text-left mb-0">
+                    <small>Εάν συνδέεστε για πρώτη φορά, μην ξεχάσετε να αλλάξετε τον κωδικό πρόσβασής σας από την καρτέλα "Ρυθμίσεις".</small>
                 </div>
             </div>
             <div class="tab-pane fade container-fluid text-center" id="reauthenticate">
@@ -65,17 +51,20 @@
                         <input type="email" id="reauthenticate-email" class="form-control-plaintext py-0" readonly>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="reauthenticate-password" class="form-control bg-tranparent" placeholder="Κωδικός πρόσβασης" required>
+                        <input type="password" id="reauthenticate-password" class="form-control bg-transparent" placeholder="Κωδικός πρόσβασης" required>
                     </div>
                     <button type="button" id="reauthenticate-button" class="btn btn-block btn-primary">Επιβεβαίωση κωδικού πρόσβασης</button>
                 </form>
+                <div  id="reauthenticate-error" class="alert alert-danger text-left mb-0">
+                    <span>Συνέβη κάποιο σφάλμα.</span>
+                </div>
             </div>
             <div class="tab-pane fade container-fluid text-center" id="password-reset">
                 <img src="images/logo-min.png?v=0" alt="" class="logo logo--large mb-3">
                 <span class="h1 d-block mb-5">CM Training</span>
                 <form class="mb-5">
                     <div class="form-group">
-                        <input type="email" id="password-reset-email" class="form-control bg-tranparent" placeholder="Διεύθυνση email" required>
+                        <input type="email" id="password-reset-email" class="form-control bg-transparent" placeholder="Διεύθυνση email" required>
                     </div>
                     <button type="button" id="password-reset-button" class="btn btn-block btn-primary">Ανάκτηση κωδικού πρόσβασης</button>
                 </form>
@@ -83,7 +72,7 @@
                     <span>Το email ανάκτησης κωδικού απεστάλη με επιτυχία. Παρακαλούμε ελέγξτε τα εισερχόμενά σας.</span>
                 </div>
                 <div  id="password-reset-error" class="alert alert-danger text-left mb-0">
-                    <span>Το email ανάκτησης κωδικού δεν απεστάλη. Παρακαλούμε προσπαθήστε αργότερα.</span>
+                    <span>Συνέβη κάποιο σφάλμα.</span>
                 </div>
             </div>
             <div class="tab-pane fade container-fluid" id="workouts">
@@ -92,14 +81,129 @@
             <div class="tab-pane fade container-fluid" id="workout">
 
             </div>
-            <div class="tab-pane fade container-fluid" id="excercise">
+            <div class="tab-pane fade container-fluid" id="exercise">
 
             </div>
             <div class="tab-pane fade container-fluid" id="create">
-
+                <div class="row mb-5">
+                    <div class="col-auto d-flex align-items-center">
+                        <img src="images/logo-min.png?v=0" alt="" class="logo logo--small">
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <span class="h1 mb-0">Δημιουργία προγράμματος</span>
+                    </div>
+                </div>
+                <div id="save-workout-success" class="alert alert-success text-left mb-5">
+                    <span>Το πρόγραμμα αποθηκεύτηκε με επιτυχία.</span>
+                </div>
+                <form>
+                    <fieldset id="workout-fields" class="mb-5">
+                        <div class="form-group">
+                            <label for="workout-user">Επιλέξτε χρήστη:</label>
+                            <select class="form-control bg-transparent" id="workout-user"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="workout-name">Επιλέξτε ημερομηνία:</label>
+                            <input type="date" class="form-control form-control--required bg-transparent" id="workout-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="workout-duration">Επιλέξτε διάρκεια/επαναλήψεις:</label>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="number" class="form-control form-control--required bg-transparent" id="workout-duration">
+                                </div>
+                                <div class="col-auto">
+                                    <select class="form-control bg-transparent" id="workout-duration-type">
+                                        <option value="minutes">λεπτά</option>
+                                        <option value="repetitions">επαναλήψεις</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" id="insert-exercise" class="btn btn-block btn-info">Εισαγωγή ασκήσεων</button>
+                    </fieldset>
+                    <fieldset id="exercises"></fieldset>
+                    <div id="workout-functions">
+                        <div class="row">
+                            <div class="col-4">
+                                <button type="button" id="add-exercise" class="btn btn-info btn-block">
+                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" id="validate-workout" class="btn btn-success btn-block">
+                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                                    </svg>
+                                </button>
+                                <button type="button" id="save-workout-prompt" class="d-none" data-toggle="modal" data-target="#save-workout-modal"></button>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete-workout-modal">
+                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="delete-exercise-modal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <span class="d-block mb-3">Θέλετε να διαγράψετε τη συγκεκριμένη άσκηση;</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" id="delete-exercise" class="btn btn-block btn-danger">ΝΑΙ</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-block btn-outline-secondary" data-dismiss="modal">ΟΧΙ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="save-workout-modal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <span class="d-block mb-3">Θέλετε να αποθηκεύσετε το πρόγραμμα;</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" id="save-workout" class="btn btn-block btn-success" data-dismiss="modal">ΝΑΙ</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-block btn-outline-secondary" data-dismiss="modal">ΟΧΙ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="delete-workout-modal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <span class="d-block mb-3">Θέλετε να διαγράψετε το πρόγραμμα και να ξεκινήσετε από την αρχή;</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" id="delete-workout" class="btn btn-block btn-danger">ΝΑΙ</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-block btn-outline-secondary" data-dismiss="modal">ΟΧΙ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane fade container-fluid" id="edit">
-
+                
             </div>
             <div class="tab-pane fade container-fluid" id="profile">
 
@@ -113,7 +217,7 @@
                         <span class="h1 mb-0">Ρυθμίσεις</span>
                     </div>
                 </div>
-                <div class="list-group list-group-flush">
+                <div class="list-group list-group-flush mb-5">
                     <button type="button" id="password-change-link" class="list-group-item list-group-item-action bg-transparent">Αλλαγή κωδικού πρόσβασης</button>
                     <div class="list-group-item">
                         <div class="row no-gutters">
@@ -121,9 +225,12 @@
                                 <span>Ειδοποιήσεις</span>
                             </div>
                             <div class="col-auto">
-                                <button type="button" id="notifications-button" class="btn p-0">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <button type="button" id="notifications-button" class="notifications-button btn p-0 position-relative">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" id="notifications-button-bell" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                                    </svg>
+                                    <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" id="notifications-button-slash" class="notifications-button__slash bi bi-slash text-danger position-absolute" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M11.354 4.646a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708l6-6a.5.5 0 0 1 .708 0z"/>
                                     </svg>
                                 </button>
                             </div>
@@ -143,6 +250,9 @@
                         </div>
                     </div>
                     <button type="button" class="list-group-item list-group-item-action text-danger bg-transparent" data-toggle="modal" data-target="#logout-modal">Αποσύνδεση</button>
+                </div>
+                <div  id="logout-error" class="alert alert-danger text-left mb-0">
+                    <span>Συνέβη κάποιο σφάλμα κατά την αποσύνδεση. Παρακαλούμε δοκιμάστε αργότερα.</span>
                 </div>
                 <div id="logout-modal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -175,12 +285,12 @@
                         <img src="images/logo-min.png?v=0" alt="" class="logo logo--small">
                     </div>
                     <div class="col d-flex align-items-center">
-                        <span class="h1 mb-0">Κωδικός</span>
+                        <span class="h1 mb-0">Αλλαγή κωδικού</span>
                     </div>
                 </div>
                 <form class="mb-5">
                     <div class="form-group">
-                        <input type="password" id="password-change-password" class="form-control" placeholder="Νέος κωδικός πρόσβασης" required>
+                        <input type="password" id="password-change-password" class="form-control bg-transparent" placeholder="Νέος κωδικός πρόσβασης" required>
                     </div>
                     <button type="button" id="password-change-button" class="btn btn-block btn-primary">Αλλαγή κωδικού πρόσβασης</button>
                 </form>
@@ -189,6 +299,19 @@
                 </div>
                 <div  id="password-change-error" class="alert alert-danger text-left mb-0">
                     <span>Ο κωδικός πρόσβασης δεν άλλαξε. Παρακαλούμε προσπαθήστε αργότερα.</span>
+                </div>
+            </div>
+            <div class="tab-pane fade container-fluid text-center" id="install">
+                <img src="images/logo-min.png?v=0" alt="" class="logo logo--large mb-3">
+                <span class="h1 d-block mb-5">CM Training</span>
+                <span class="d-block font-weight-bold mb-3">Εγκαταστήστε την εφαρμογή</span>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-block btn--android btn-primary">Android</button>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-block btn--ios btn-primary" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">iOS</button>
+                    </div>
                 </div>
             </div>
             <div class="tab-pane fade container-fluid text-center" id="about">
@@ -225,7 +348,7 @@
                             <button type="button" class="btn btn-block btn--android btn-primary">Android</button>
                         </div>
                         <div class="col-5">
-                            <button type="button" class="btn btn-block btn--ios btn-primary">iOS</button>
+                            <button type="button" class="btn btn-block btn--ios btn-primary" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">iOS</button>
                         </div>
                     </div>
                 </div>
@@ -236,14 +359,6 @@
             </div>
         </div>
         <div class="nav nav-justified fixed-bottom bg-primary shadow invisible">
-            <a href="#install" id="install-tab" class="tab-link nav-link text-center px-0 install">
-                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                    <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                </svg>
-                <br>
-                <small>Λήψη</small>
-            </a>
             <a href="#login" id="login-tab" class="tab-link nav-link text-center px-0 login">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
@@ -295,6 +410,14 @@
                 <small>Ρυθμίσεις</small>
             </a>
             <a href="#password-change" id="password-change-tab" class="tab-link user admin"></a>
+            <a href="#install" id="install-tab" class="tab-link nav-link text-center px-0">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                    <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                <br>
+                <small>Εγκατάσταση</small>
+            </a>
             <a href="#about" id="about-tab" class="tab-link nav-link text-center px-0 install login user admin">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -315,10 +438,12 @@
             const el = document.createElement('pwa-update');
             document.body.appendChild(el);
         </script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
         <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
         <script src="js/script.js?v=4"></script>

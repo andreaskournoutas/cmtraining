@@ -37,8 +37,12 @@ body, .tab-content, .tab-pane {
     width: 150px;
 }
 
-#notifications-button {
+.notifications-button {
     width: 44px;
+    &__slash {
+        left: 1px;
+        top: -6px;
+    }
 }
 
 .custom-control-label::before {
@@ -50,9 +54,17 @@ body, .tab-content, .tab-pane {
     height: 4rem;
 }
 
+.alert-success, .alert-danger, #workout-functions {
+    display: none;
+}
+
+.faded {
+    opacity: .5;
+}
+
 .dark {
     filter: invert(100%);
-    & img, & .nav, & .custom-control, & [class*='danger'], & [class*='success'], & [class*='primary'] {
+    & img, & .nav, & .custom-control, & [class*='danger'], & [class*='success'], & [class*='primary'], & [class*='info'] {
         filter: invert(100%);
     }
 }
