@@ -195,7 +195,7 @@ $('#save-workout').click(function() {
     let newWorkoutRef = firebase.database().ref('users/' + $('#workout-user').val() + '/workouts').push();
     newWorkoutRef.set({
         'name': convertDateToName($('#workout-name').val()),
-        'durationType': $('#workout-duration-type').val();
+        'durationType': $('#workout-duration-type').val(),
         'duration': workoutDuration,
         'completed': 'false',
         'exercises': exercises
