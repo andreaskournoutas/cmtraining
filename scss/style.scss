@@ -54,7 +54,7 @@ body, .tab-content, .tab-pane {
     height: 4rem;
 }
 
-.alert-success, .alert-danger, #workout-functions {
+.alert-success, .alert-danger, .alert-warning, #workout-functions {
     display: none;
 }
 
@@ -64,7 +64,7 @@ body, .tab-content, .tab-pane {
 
 .dark {
     filter: invert(100%);
-    & img, & .nav, & .custom-control, & [class*='danger'], & [class*='success'], & [class*='primary'], & [class*='info'] {
+    & img, & .nav, & .custom-control, & [class*='danger'], & [class*='success'], & [class*='primary'], & [class*='info'], & [class*='warning'] {
         filter: invert(100%);
     }
 }
