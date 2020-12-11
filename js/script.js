@@ -357,9 +357,9 @@ function convertDateToName(date) {
 }
 
 function convertNameToDate(name) {
-    let y = name.toString().slice(0, 4);
-    let m = name.toString().slice(4, 6);
-    let d = name.toString().slice(6, 8);
+    let y = name.slice(0, 4);
+    let m = name.slice(4, 6);
+    let d = name.slice(6, 8);
     return (d + '/' + m + '/' + y);
 }
 
@@ -385,7 +385,7 @@ function loadWorkouts(uid) {
                 else {
                     workoutStatusColor = 'text-secondary';
                 }
-                $('#workouts').append('<button type="button" class="workout card btn d-block w-100 p-0 text-left mb-3" data-key="' + childSnapshot.key + '"> <div class="row no-gutters w-100"> <div class="col-auto p-3 border-right"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill ' + workoutStatusColor + '" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/> </svg> </div><div class="col p-3"> <b>' + convertNameToDate(childSnapshot.child('name').val()) + '</b> </div><div class="col-auto p-3 border-left"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right text-info" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg> </div></div></button>');
+                $('#workouts').append('<button type="button" class="workout card btn d-block w-100 p-0 text-left mb-3" data-key="' + childSnapshot.key + '"> <div class="row no-gutters w-100"> <div class="col-auto p-3 border-right"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill ' + workoutStatusColor + '" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/> </svg> </div><div class="col p-3"> <span class="font-weight-bold">' + convertNameToDate(childSnapshot.child('name').val()) + '</span> </div><div class="col-auto p-3 border-left"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right text-info" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg> </div></div></button>');
             });
         }
     });
