@@ -64,7 +64,7 @@ body, .tab-content, .tab-pane {
 
 .dark {
     filter: invert(100%);
-    & img, & .nav, & .custom-control, & [class*='danger'], & [class*='success'], & [class*='primary'], & [class*='info'], & [class*='warning'] {
+    & img, & .nav, & .custom-control, & [class*='danger'], & [class*='success'], & [class*='primary'], & [class*='info'], & [class*='warning'], & [class*='light'] {
         filter: invert(100%);
     }
 }

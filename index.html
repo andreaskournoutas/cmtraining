@@ -87,9 +87,23 @@
                 <div  id="workouts-warning" class="alert alert-warning text-left mb-0">
                     <span>Δεν υπάρχουν προγράμματα για προβολή.</span>
                 </div>
+                <div id="workouts-list"></div>
             </div>
             <div class="tab-pane fade container-fluid" id="workout">
-
+                <div class="row mb-3">
+                    <div class="col-auto d-flex align-items-center">
+                        <img src="images/logo-min.png?v=0" alt="" class="logo logo--small">
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <span id="workout-title" class="h1 mb-0"></span>
+                    </div>
+                </div>
+                <div class="p-3 border-top border-bottom sticky-top text-center mb-3 bg-white">
+                    <span class="font-weight-bold">Διάρκεια: </span>
+                    <span id="workout-info" class="font-weight-bold"></span>
+                </div>
+                <button type="button" id="start-workout" class="btn btn-block btn-info mb-3">Έναρξη προγράμματος</button>
+                <div id="exercises-list"></div>
             </div>
             <div class="tab-pane fade container-fluid" id="exercise">
 
@@ -388,6 +402,7 @@
                 <br>
                 <small>Προγράμματα</small>
             </a>
+            <a href="#workout" id="workout-tab" class="tab-link user"></a>
             <a href="#create" id="create-tab" class="tab-link nav-link text-center px-0 admin">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
@@ -460,6 +475,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
         <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-        <script src="js/script.js?v=7"></script>
+        <script src="js/script.js?v=8"></script>
     </body>
 </html>

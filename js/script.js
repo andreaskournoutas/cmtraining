@@ -11,6 +11,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+let uid = '';
+
 enableDarkThemeOnLoad();
 checkPwaInstallation();
 checkUserState();
@@ -36,7 +38,7 @@ $('#login-button').click(function() {
             $('.nav-link').not('.user').hide();
             $('.nav').removeClass('invisible');
             $('#workouts-tab').tab('show');
-            console.log(user.uid);
+            uid = user.uid;
             loadWorkouts(user.uid);
         }
     }).catch((error) => {
@@ -52,7 +54,7 @@ $('#logout-button').click(function() {
         $('.nav-link').show();
         $('.nav-link').not('.login').hide();
         $('.nav').removeClass('invisible');
-        $('#login-tab').tab('show');
+        location.reload();
     }).catch(function(error) {
         $('#logout-error').show();
     });
@@ -176,6 +178,7 @@ $('#save-workout').click(function() {
         exercises[index] = new Object();
         exercises[index].name = $('.exercise__name', this).val();
         exercises[index].duration = $('.exercise__duration', this).val();
+        exercises[index].durationType = $('.exercise__duration-type', this).val();
     });
     let newWorkoutRef = firebase.database().ref('users/' + $('#workout-user').val() + '/workouts').push();
     newWorkoutRef.set({
@@ -196,6 +199,48 @@ $('#save-workout').click(function() {
 $('body').on('click', '.exercise__delete-button', function() {
     $(this).closest('.exercise').remove();
     checkNumberOfExercises();
+});
+
+$('body').on('click', '.workout', function() {
+    $('.exercise').remove();
+    $('#workout-info').text('')
+    $('#workout-tab').tab('show');
+    $('#workout-title').text($(this).data('title'));
+    $('#workout-info').append($(this).data('duration'));
+    if ($(this).data('duration-type') == 'repetitions') {
+        if ($(this).data('duration') == 1) {
+            $('#workout-info').append(' επανάληψη');
+        }
+        else {
+            $('#workout-info').append(' επαναλήψεις');
+        }
+    }
+    else {
+        $('#workout-info').append(' λεπτά');
+    }
+    let duration = '';
+    firebase.database().ref('users/' + uid + '/workouts/' + $(this).data('key') + '/exercises').once('value').then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            if (childSnapshot.child('durationType').val() == 'repetitions') {
+                duration += 'x';
+            }
+            duration += childSnapshot.child('duration').val();
+            if (childSnapshot.child('durationType').val() == 'seconds') {
+                duration += "'";
+            }
+            $('#exercises-list').append('<button type="button" class="exercise card btn d-block w-100 p-0 text-left mb-3" data-duration-type="' + childSnapshot.child('durationType').val() + '"> <div class="row no-gutters w-100"> <div class="exercise__status col-auto p-3 border-right"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill text-secondary" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/> </svg> </div><div class="col p-3"> <span class="font-weight-bold">' + childSnapshot.child('name').val() + '</span> </div><div class="col-auto p-3"> <span class="exercise__duration">' + duration + '</span> </div><div class="exercise__next col-auto p-3 bg-success rounded-right text-light d-none"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg"></svg> <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/> </svg> </div></div></button>');
+            duration = '';
+        });
+    });
+});
+
+$('#start-workout').click(function() {
+    if ($('.exercise')[0].data('duration-type') == 'repetitions') {
+
+    }
+    else {
+
+    }
 });
 
 function enableDarkTheme() {
@@ -261,7 +306,7 @@ function checkUserState() {
                 $('.nav-link').not('.user').hide();
                 $('.nav').removeClass('invisible');
                 $('#workouts-tab').tab('show');
-                console.log(user.uid);
+                uid = user.uid;
                 loadWorkouts(user.uid);
             }
         }
@@ -355,20 +400,21 @@ function hideLoader() {
 }
 
 function loadWorkouts(uid) {
-    firebase.database().ref('users/' + uid + '/workouts').once('value').then(function(snapshot) {
+    firebase.database().ref('users/' + uid + '/workouts').orderByChild('name').once('value').then(function(snapshot) {
         if (snapshot.numChildren() == 0) {
             $('#workouts-warning').show();
         }
         else {
             snapshot.forEach(function(childSnapshot) {
+                $('#workouts-warning').hide();
                 let workoutStatusColor = '';
                 if (childSnapshot.child('completed').val() == 'true') {
-                    workoutStatusColor = 'text-success';
+                    status = 'text-success';
                 }
                 else {
-                    workoutStatusColor = 'text-secondary';
+                    status = 'text-secondary';
                 }
-                $('#workouts').append('<button type="button" class="workout card btn d-block w-100 p-0 text-left mb-3" data-key="' + childSnapshot.key + '"> <div class="row no-gutters w-100"> <div class="col-auto p-3 border-right"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill ' + workoutStatusColor + '" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/> </svg> </div><div class="col p-3"> <span class="font-weight-bold">' + convertNameToDate(childSnapshot.child('name').val()) + '</span> </div><div class="col-auto p-3 border-left"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right text-info" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg> </div></div></button>');
+                $('#workouts-list').prepend('<button type="button" class="workout card btn d-block w-100 p-0 text-left mb-3" data-key="' + childSnapshot.key + '" data-title="' + convertNameToDate(childSnapshot.child('name').val()) + '" data-duration="' + childSnapshot.child('duration').val() + '" data-duration-type="' + childSnapshot.child('durationType').val() + '"> <div class="row no-gutters w-100"> <div class="col-auto p-3 border-right"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill ' + status + '" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/> </svg> </div><div class="col p-3"> <span class="font-weight-bold">' + convertNameToDate(childSnapshot.child('name').val()) + '</span> </div><div class="col-auto p-3 bg-info rounded-right text-light"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg> </div></div></button>');
             });
         }
     });
