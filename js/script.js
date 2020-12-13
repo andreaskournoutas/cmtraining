@@ -171,34 +171,17 @@ $('#validate-workout').click(function() {
 });
 
 $('#save-workout').click(function() {
-    let workoutDuration = '';
-    if ($('#workout-duration-type').val() == 'repetitions') {
-        workoutDuration += 'x';
-    }
-    workoutDuration += $('#workout-duration').val();
-    if ($('#workout-duration-type').val() == 'minutes') {
-        workoutDuration += "'";
-    }
     let exercises = [];
-    let exerciseDuration = '';
     $('.exercise').each(function(index) {
-        exerciseDuration = '';
-        if ($('.exercise__duration-type', this).val() == 'repetitions') {
-            exerciseDuration += 'x';
-        }
-        exerciseDuration += $('.exercise__duration', this).val();
-        if ($('.exercise__duration-type', this).val() == 'seconds') {
-            exerciseDuration += "''";
-        }
         exercises[index] = new Object();
         exercises[index].name = $('.exercise__name', this).val();
-        exercises[index].duration = exerciseDuration;
+        exercises[index].duration = $('.exercise__duration', this).val();
     });
     let newWorkoutRef = firebase.database().ref('users/' + $('#workout-user').val() + '/workouts').push();
     newWorkoutRef.set({
         'name': convertDateToName($('#workout-name').val()),
         'durationType': $('#workout-duration-type').val(),
-        'duration': workoutDuration,
+        'duration': $('#workout-duration').val(),
         'completed': 'false',
         'exercises': exercises
     });
