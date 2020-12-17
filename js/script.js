@@ -122,6 +122,9 @@ function changePassword() {
 
 function enableNotifications() {
     setNotificationsButtonToEnabled();
+    OneSignal.push(function() {
+        OneSignal.showNativePrompt();
+    });
     localStorage.setItem('notifications', 'true');
     // to do
 }
@@ -355,6 +358,7 @@ function initializeOneSignal() {
     OneSignal.push(function() {
         OneSignal.init({
         appId: 'cbd2e5af-f377-4a51-88c3-13a508059c98',
+        safari_web_id: 'web.onesignal.auto.21fd847c-14e1-48c8-a072-78170e2e9023',
         notifyButton: {
             enable: false,
         },

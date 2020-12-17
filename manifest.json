@@ -5,7 +5,7 @@
     "short_name": "CM Training",
     "scope": "/cmtraining/",
     "display": "fullscreen",
-    "start_url": "index.html",
+    "start_url": "/cmtraining/",
     "background_color": "#3c312d",
     "theme_color": "#3c312d",
     "description": "Προσωποποιημένα προγράμματα γυμναστικής",
@@ -122,6 +122,6 @@
             "purpose": "any maskable"
         }
     ],
-    "url": "index.html",
+    "url": "/cmtraining/",
     "screenshots": []
 }
