@@ -355,14 +355,18 @@ function initializeFirebase() {
 
 function initializeOneSignal() {
     window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-        OneSignal.init({
+    const initConfig = {
         appId: 'cbd2e5af-f377-4a51-88c3-13a508059c98',
         safari_web_id: 'web.onesignal.auto.21fd847c-14e1-48c8-a072-78170e2e9023',
         notifyButton: {
             enable: false,
-        },
-        });
+        }
+    };
+    OneSignal.push(function() {
+        OneSignal.SERVICE_WORKER_PARAM = { scope: '/cmtraining/' };
+        OneSignal.SERVICE_WORKER_PATH = 'cmtraining/OneSignalSDKWorker.js'
+        OneSignal.SERVICE_WORKER_UPDATER_PATH = 'cmtraining/OneSignalSDKUpdaterWorker.js'
+        OneSignal.init(initConfig);
     });
 }
 
