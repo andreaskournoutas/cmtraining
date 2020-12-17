@@ -46,7 +46,7 @@
             <div class="tab-pane fade container-fluid text-center" id="reauthenticate">
                 <img src="images/logo-min.png?v=0" alt="" class="logo logo--large mb-3">
                 <span class="h1 d-block mb-5">CM Training</span>
-                <form>
+                <form class="mb-5">
                     <div class="form-group">
                         <input type="email" id="reauthenticate-email" class="form-control-plaintext py-0" readonly>
                     </div>
@@ -104,9 +104,19 @@
                 </div>
                 <button type="button" id="start-workout" class="btn btn-block btn-info mb-3">Έναρξη προγράμματος</button>
                 <div id="exercises-list"></div>
-            </div>
-            <div class="tab-pane fade container-fluid" id="exercise">
-
+                <div class="workout__functions">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <button type="button" id="reset-workout" class="btn btn-info btn-block" disabled>Επανέναρξη προγράμματος</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" id="finish-workout" class="btn btn-success btn-block" disabled>Ολοκλήρωση</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" id="cancel-workout" class="btn btn-danger btn-block">Ακύρωση</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane fade container-fluid" id="create">
                 <div class="row mb-5">
@@ -144,13 +154,13 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" id="insert-exercise" class="btn btn-block btn-info">Εισαγωγή ασκήσεων</button>
+                        <button type="button" class="add-exercise btn btn-block btn-info">Εισαγωγή ασκήσεων</button>
                     </fieldset>
                     <fieldset id="exercises"></fieldset>
-                    <div id="workout-functions">
+                    <div class="workout__functions">
                         <div class="row">
                             <div class="col-4">
-                                <button type="button" id="add-exercise" class="btn btn-info btn-block">
+                                <button type="button" class="add-exercise btn btn-info btn-block">
                                     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                     </svg>
@@ -226,12 +236,6 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade container-fluid" id="edit">
-                
-            </div>
-            <div class="tab-pane fade container-fluid" id="profile">
-
-            </div>
             <div class="tab-pane fade container-fluid" id="settings">
                 <div class="row mb-5">
                     <div class="col-auto d-flex align-items-center">
@@ -299,17 +303,10 @@
             <div class="tab-pane fade container-fluid" id="password-change">
                 <div class="row mb-5">
                     <div class="col-auto d-flex align-items-center">
-                        <button type="button" id="back-button" class="btn px-0">
-                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="col-auto d-flex align-items-center">
                         <img src="images/logo-min.png?v=0" alt="" class="logo logo--small">
                     </div>
                     <div class="col d-flex align-items-center">
-                        <span class="h1 mb-0">Αλλαγή κωδικού</span>
+                        <span class="h1 mb-0">Αλλαγή κωδικού πρόσβασης</span>
                     </div>
                 </div>
                 <form class="mb-5">
@@ -319,7 +316,7 @@
                     <button type="button" id="password-change-button" class="btn btn-block btn-primary">Αλλαγή κωδικού πρόσβασης</button>
                 </form>
                 <div id="password-change-success" class="alert alert-success text-left mb-0">
-                    <span>Ο κωδικός πρόσβασης άλλαξε με επιτυχία</span>
+                    <span>Ο κωδικός πρόσβασης άλλαξε με επιτυχία.</span>
                 </div>
                 <div  id="password-change-error" class="alert alert-danger text-left mb-0">
                     <span>Ο κωδικός πρόσβασης δεν άλλαξε. Παρακαλούμε προσπαθήστε αργότερα.</span>
@@ -379,11 +376,11 @@
                 <a href="https://omniweb.gr/" target="_blank" class="omniweb d-block mx-auto mb-5">
                     <img src="images/omniweb.png" alt="" class="img-fluid rounded" loading="lazy">
                 </a>
-                <small class="text-muted">v2020.12.10</small>
+                <small class="text-muted">v2020.12.16</small>
             </div>
         </div>
         <div class="nav nav-justified fixed-bottom bg-primary shadow invisible">
-            <a href="#login" id="login-tab" class="tab-link nav-link text-center px-0 login">
+            <a href="#login" id="login-tab" data-toggle="tab" class="tab-link nav-link text-center px-0 login">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
                     <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
@@ -391,9 +388,9 @@
                 <br>
                 <small>Σύνδεση</small>
             </a>
-            <a href="#reauthenticate" id="reauthenticate-tab" class="tab-link user admin"></a>
-            <a href="#password-reset" id="password-reset-tab" class="tab-link login"></a>
-            <a href="#workouts" id="workouts-tab" class="tab-link nav-link text-center px-0 user">
+            <a href="#reauthenticate" id="reauthenticate-tab" data-toggle="tab" class="tab-link user admin"></a>
+            <a href="#password-reset" id="password-reset-tab" data-toggle="tab" class="tab-link login"></a>
+            <a href="#workouts" id="workouts-tab" data-toggle="tab" class="tab-link nav-link text-center px-0 user">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
                     <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
@@ -402,8 +399,8 @@
                 <br>
                 <small>Προγράμματα</small>
             </a>
-            <a href="#workout" id="workout-tab" class="tab-link user"></a>
-            <a href="#create" id="create-tab" class="tab-link nav-link text-center px-0 admin">
+            <a href="#workout" id="workout-tab" data-toggle="tab" class="tab-link user"></a>
+            <a href="#create" id="create-tab" data-toggle="tab" class="tab-link nav-link text-center px-0 admin">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
                     <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
@@ -412,21 +409,7 @@
                 <br>
                 <small>Δημιουργία</small>
             </a>
-            <!-- <a href="#edit" id="edit-tab" class="tab-link nav-link text-center px-0 admin">
-                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-                </svg>
-                <br>
-                <small>Επεξεργασία</small>
-            </a> -->
-            <!-- <a href="#profile" id="profile-tab" class="tab-link nav-link text-center px-0 user">
-                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                </svg>
-                <br>
-                <small>Προφίλ</small>
-            </a> -->
-            <a href="#settings" id="settings-tab" class="tab-link nav-link text-center px-0 user admin">
+            <a href="#settings" id="settings-tab" data-toggle="tab" class="tab-link nav-link text-center px-0 user admin">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
                     <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
@@ -434,8 +417,8 @@
                 <br>
                 <small>Ρυθμίσεις</small>
             </a>
-            <a href="#password-change" id="password-change-tab" class="tab-link user admin"></a>
-            <a href="#install" id="install-tab" class="tab-link nav-link text-center px-0">
+            <a href="#password-change" id="password-change-tab" data-toggle="tab" class="tab-link user admin"></a>
+            <a href="#install" id="install-tab" data-toggle="tab" class="tab-link nav-link text-center px-0 install">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                     <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
@@ -443,7 +426,7 @@
                 <br>
                 <small>Εγκατάσταση</small>
             </a>
-            <a href="#about" id="about-tab" class="tab-link nav-link text-center px-0 install login user admin">
+            <a href="#about" id="about-tab" data-toggle="tab" class="tab-link nav-link text-center px-0 login user admin">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
