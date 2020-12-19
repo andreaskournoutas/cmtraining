@@ -2,6 +2,7 @@ enablePreferredTheme();
 checkPwaInstallation();
 checkNotificationState();
 initializeOneSignal();
+initializePopovers();
 listenToOsThemeChange();
 
 function showLoginTab() {
@@ -46,7 +47,6 @@ function showInstallTab() {
 
 function showAboutTab() {
     $('#about-tab').click();
-    $('[data-toggle="popover"]').popover();
 }
 
 function login() {
@@ -451,6 +451,10 @@ function loadWorkouts(uid) {
             });
         }
     });
+}
+
+function initializePopovers() {
+    $('[data-toggle="popover"]').popover();
 }
 
 $('#login-button').click(function() {
